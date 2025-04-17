@@ -1,0 +1,197 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .dashboard{
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+  font-family: Georgia, serif;
+  font-weight: bold; 
+  font-size: 35px;
+  z-index: 1000;
+  }
+
+  .centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 65%; 
+      max-width: 100%;
+      margin-top: 18px;
+  }
+  
+  .dropdown-btn {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  
+  .scrollable-dropdown {
+      max-height: 300px;
+      overflow-y: auto;
+      width: 250px;
+  }
+
+  .dropdown-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+</style>
+
+<div class="dashboard">
+    Bubble Diagram
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" id="cropDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Arecanut
+        </button>
+        <ul class="dropdown-menu scrollable-dropdown" style="margin-left: 100px;">
+            <li><a class="dropdown-item" href="#" data-crop="Arecanut">Arecanut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Arhar">Arhar</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Bajra">Bajra</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Banana">Banana</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Barley">Barley</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Black pepper">Black pepper</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cardamom">Cardamom</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Castor seed">Castor seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cereals">Cereals</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coarse Cereals">Coarse Cereals</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coconut">Coconut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coffee">Coffee</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coriander">Coriander</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cotton seed">Cotton seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cotton(lint)">Cotton(lint)</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Dry chilies">Dry chilies</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Dry ginger">Dry ginger</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Garlic">Garlic</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Gram">Gram</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Groundnut">Groundnut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jowar">Jowar</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jute">Jute</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jute & Mesta">Jute & Mesta</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Linseed">Linseed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Maize">Maize</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Mesta">Mesta</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Niger seed">Niger seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Nine Oilseeds">Nine Oilseeds</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Onion">Onion</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Other Pulses">Other Pulses</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Potato">Potato</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Ragi">Ragi</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rapeseed & Mustard">Rapeseed & Mustard</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rice">Rice</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rubber">Rubber</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Safflower">Safflower</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sannhamp">Sannhamp</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sesamum">Sesamum</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Small millets">Small millets</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Soyabean">Soyabean</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sugarcane">Sugarcane</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sunflower">Sunflower</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sweet potato">Sweet potato</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tapioca">Tapioca</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tea">Tea</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tobacco">Tobacco</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Fibers">Total Fibers</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Foodgrains">Total Foodgrains</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Fruits & Vegetables">Total Fruits & Vegetables</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Non-Food grains">Total Non-Food grains</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Oilseeds">Total Oilseeds</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Pulses">Total Pulses</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Spices">Total Spices</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Turmeric">Turmeric</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Wheat">Wheat</a></li>
+        </ul>
+    </div>
+</div>
+
+<img id="cropImage" src="{% static 'img/Arecanut_bubble.png' %}" alt="" class="centered-image">
+
+<div class="d-flex justify-content-center">
+    <p id="cropDescription" style="font-weight: bold; font-size: 1.3em;">The Yield of Arecanut is relatively stable, and increasing the Area can improve Production.</p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownItems = document.querySelectorAll('.dropdown-item[data-crop]');
+        const dropdownButton = document.getElementById('cropDropdownButton');
+        const cropImage = document.getElementById('cropImage');
+        const cropDescription = document.getElementById('cropDescription');
+
+      
+        const cropDescriptions = {
+            "Arhar": "The Yield of Arhar is very unstable, please choose planting carefully.",
+            "Bajra": "The Yield of Bajra is very unstable, please choose planting carefully.",
+            "Barley": "The Yield of Barley is very unstable, please choose planting carefully.",
+            "Black pepper": "The Yield of Bajra is very unstable, please choose planting carefully.",
+            "Cardamom": "The yield of Cardamom has increased year by year, the Area can be increased to improve Production.",
+            "Castor seed": "The yield of Castor seed has increased year by year, the Area can be increased to improve Production.",
+            "Cereals": "The Yield of Cereals is very unstable, please choose planting carefully.",
+            "Coarse Cereals": "The Yield of Coarse Cereals is very unstable, please choose planting carefully.",
+            "Coconut": "The yield of Coconut is gradually stabilizing, the Area can be increased to improve Production.",
+            "Coriander": "The Yield of Coriander is very unstable, please choose planting carefully.",
+            "Cotton seed": "The Yield of Cotton seed is very unstable, please choose planting carefully.",
+            "Cotton(lint)": "The Yield of Cotton(lint) is very unstable, please choose planting carefully.",
+            "Dry chilies": "The Yield of Dry chilies is very unstable, please choose planting carefully.",
+            "Gram": "The yield of Gram has increased year by year, the Area can be increased to improve Production.",
+            "Groundnut": "The Yield of Groundnut is very unstable, please choose planting carefully.",
+            "Jowar": "The Yield of Jowar is very unstable, please choose planting carefully.",
+            "Jute": "The Yield of Jute is very unstable, please choose planting carefully.",
+            "Jute & Mesta": "The Yield of Jute & Mesta is very unstable, please choose planting carefully.",
+            "Linseed": "The Yield of Linseed is very unstable, please choose planting carefully.",
+            "Maize": "The Yield of Maize is very unstable, please choose planting carefully.",
+            "Mesta": "The Yield of Mesta decreases year by year, its Area can be appropriately reduced.",
+            "Niger seed": "The Yield of Niger seed is very unstable, please choose planting carefully.",
+            "Nine Oilseeds": "The Yield of Nine Oilseeds is very unstable, please choose planting carefully.",
+            "Onion": "The Yield of Onion is very unstable, please choose planting carefully.",
+            "Other Pulses": "The Yield of Other Pulses is very unstable, please choose planting carefully.",
+            "Potato": "The yield of Potato has increased year by year, the Area can be increased to improve Production.",
+            "Ragi": "The Yield of Ragi is very unstable, please choose planting carefully.",
+            "Rapeseed & Mustard": "The Yield of Rapeseed & Mustard is very unstable, please choose planting carefully.",
+            "Rubber": "The Yield of Rubber decreases year by year, its Area can be appropriately reduced.",
+            "Safflower": "The Yield of Safflower is very unstable, please choose planting carefully.",
+            "Sannhamp": "The Yield of Sannhamp is very unstable, please choose planting carefully.",
+            "Sesamum": "The Yield of Sesamum is very unstable, please choose planting carefully.",
+            "Small millets": "The Yield of Small millets is very unstable, please choose planting carefully.",
+            "Soyabean": "The Yield of Soyabean is very unstable, please choose planting carefully.",
+            "Sunflower": "The Yield of Sunflower is very unstable, please choose planting carefully.",
+            "Tapioca": "The yield of Tapioca has increased year by year, the Area can be increased to improve Production.",
+            "Tobacco": "The yield of Tobacco has increased year by year, the Area can be increased to improve Production.",
+            "Total Fibers": "The Yield of Total Fibers is very unstable, please choose planting carefully.",
+            "Total Foodgrains": "The Yield of Total Foodgrains is very unstable, please choose planting carefully.",
+            "Total Fruits & Vegetables": "The yield of Total Fruits & Vegetables has increased year by year, the Area can be increased to improve Production.",
+            "Total Non-Food grains": "The Yield of Total Non-Food grains is very unstable, please choose planting carefully.",
+            "Total Oilseeds": "The Yield of Total Oilseeds is very unstable, please choose planting carefully.",
+            "Total Pulses": "The Yield of Total Pulses generally goes up and the Area can be increased to improve Production.",
+            "Total Spices": "The Yield of Total Spices is very unstable, please choose planting carefully.",
+            "Turmeric": "The Yield of Turmeric generally goes up and the Area can be increased to improve Production.",
+            "Wheat": "The Yield of Wheat generally goes up and the Area can be increased to improve Production.",
+
+        };
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedCrop = this.getAttribute('data-crop');
+                
+                if (selectedCrop) {
+                    dropdownButton.textContent = selectedCrop;
+                    const imageName = `${selectedCrop}_bubble.png`;
+                    cropImage.src = "{% static 'img/' %}" + imageName;
+                    cropImage.alt = `${selectedCrop} chart`;
+
+                    if (cropDescriptions && cropDescriptions[selectedCrop]) {
+                        cropDescription.textContent = cropDescriptions[selectedCrop];
+                    } else {
+                        cropDescription.textContent = `The Yield of ${selectedCrop} is relatively stable, and increasing the Area can improve Production.`;
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .dashboard{
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+  font-family: Georgia, serif;
+  font-weight: bold; 
+  font-size: 35px;
+  z-index: 1000;
+  }
+
+  .centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 65%; 
+      max-width: 100%;
+      margin-top: 18px;
+  }
+  
+  .dropdown-btn {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  
+  .scrollable-dropdown {
+      max-height: 300px;
+      overflow-y: auto;
+      width: 250px;
+  }
+
+  .dropdown-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+</style>
+
+<div class="dashboard">
+    Area vs Production
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" id="cropDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Arecanut
+        </button>
+        <ul class="dropdown-menu scrollable-dropdown" style="margin-left: 100px;">
+            <li><a class="dropdown-item" href="#" data-crop="Arecanut">Arecanut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Arhar">Arhar</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Bajra">Bajra</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Banana">Banana</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Barley">Barley</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Black pepper">Black pepper</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cardamom">Cardamom</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Castor seed">Castor seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cereals">Cereals</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coarse Cereals">Coarse Cereals</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coconut">Coconut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coffee">Coffee</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coriander">Coriander</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cotton seed">Cotton seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cotton(lint)">Cotton(lint)</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Dry chilies">Dry chilies</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Dry ginger">Dry ginger</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Garlic">Garlic</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Gram">Gram</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Groundnut">Groundnut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jowar">Jowar</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jute">Jute</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jute & Mesta">Jute & Mesta</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Linseed">Linseed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Maize">Maize</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Mesta">Mesta</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Niger seed">Niger seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Nine Oilseeds">Nine Oilseeds</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Onion">Onion</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Other Pulses">Other Pulses</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Potato">Potato</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Ragi">Ragi</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rapeseed & Mustard">Rapeseed & Mustard</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rice">Rice</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rubber">Rubber</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Safflower">Safflower</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sannhamp">Sannhamp</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sesamum">Sesamum</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Small millets">Small millets</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Soyabean">Soyabean</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sugarcane">Sugarcane</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sunflower">Sunflower</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sweet potato">Sweet potato</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tapioca">Tapioca</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tea">Tea</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tobacco">Tobacco</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Fibers">Total Fibers</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Foodgrains">Total Foodgrains</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Fruits & Vegetables">Total Fruits & Vegetables</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Non-Food grains">Total Non-Food grains</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Oilseeds">Total Oilseeds</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Pulses">Total Pulses</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Spices">Total Spices</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Turmeric">Turmeric</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Wheat">Wheat</a></li>
+        </ul>
+    </div>
+</div>
+
+<img id="cropImage" src="{% static 'img/Arecanut_Area_Production.png' %}" alt="" class="centered-image">
+
+<div class="d-flex justify-content-center">
+    <p id="trendMessage" class="trend-message" style="font-weight: bold; font-size: 1.3em;">Arecanut saw the opposite trend in Area and Production between 2008-09 and 2009-10,<br> and was about the same for the rest of the year.</p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownItems = document.querySelectorAll('.dropdown-item[data-crop]');
+        const dropdownButton = document.getElementById('cropDropdownButton');
+        const cropImage = document.getElementById('cropImage');
+        const trendMessage = document.getElementById('trendMessage');
+
+        const cropDescriptions = {
+            'Arecanut': 'Arecanut saw the opposite trend in Area and Production between 2008-09 and 2009-10,<br> and was about the same for the rest of the year.',
+            'Black pepper': 'In 2008-09, there was a large Area and very little Production. <br>Between 2009-10 and 2010-11, the trends in Area and Production were reversed.',
+            'Cardamom': 'Between 2008-09 and 2010-11, the trends in Area and Production were reversed.',
+            'Cereals': 'In 2006-07, the Area was large but Production was minimal. <br>For the rest of the time, the trend in Area and Production was much the same.',
+            'Coarse Cereals': 'From 2006-07 to 2007-08, the trend of Area and Production changes was opposite,<br> and the trend of the rest of the time was roughly the same.',
+            'Coconut': 'From 2008-09 to 2009-10, the trend of Area and Production changes was opposite,<br> and the trend of the rest of the time was roughly the same.',
+            'Jowar': 'The trend of Jowar\'s Area and Production changes was the same only from 2007-08 to 2008-09,<br> and reversed in the rest of the time.',
+            'Linseed': 'The change trend of Jowar Area and Production was the same only from 2008-09 to 2009-10,<br> and reversed in the rest of the time.',
+            'Maize': 'Trends in the Area and Production of Maize were reversed from 2008-09 to 2009-10 <br>and remained the same for the rest of the year.',
+            'Niger seed': 'Niger seed Area and Production trends were reversed from 2007-08 to 2008-09 and 2009-10 to 2010-11,<br> but remained the same for the rest of the year.',
+            'Nine Oilseeds': 'The trend of Area and Production changes in Nine Oilseeds was reversed during 2007-08 to 2008-09<br> and remained the same for the rest of the year.',
+            'Other Pulses': 'The trend in the Area and Production of Other Pulses was reversed from 2008-09 to 2009-10<br> and the same for the rest of the year.',
+            'Rubber': 'The Rubber Area shows a gradual upward trend, but the variation trend of Productiion fluctuates greatly.',
+            'Sesamum': 'The trend of changes in the Area and Productiion of Sesamumr was reversed from 2007-08 to 2008-09 and 2008-09 to 2009-10,<br> and the rest of the time was the same.',
+            'Soyabean': 'The change trend of Soyabean Area and Productiion was reversed from 2007-08 to 2008-09 and 2009-10 to 2010-11,<br> but remained the same for the rest of the time.',
+            'Sugarcane': 'Sugarcane Area and Productiion showed opposite trends from 2008-09 to 2009-10,<br> and remained the same for the rest of the year.',
+            'Sunflower': 'Sunflower showed the opposite trend between 2006-07 and 2007-08, and remained the same for the rest of the year.',
+            'Tea': 'The Area of Tea was unchanged between 2006-07 and 2007-08, but Production was sharply reduced.',
+            'Total Foodgrains': 'Total Foodgrains showed opposite trends in Area and Production from 2007-08 to 2008-09,<br> and remained the same for the rest of the year.',
+            'Total Non-Food grains': 'Total Non-Food grains showed opposite trends in Area and Production from 2007-08 to 2009-10,<br> and remained the same for the rest of the year.',
+            'Total Oilseeds': 'The trend in Area and Production of Total Oilseeds was reversed between 2007-08 and 2008-09,<br> and the rest of the time was the same.',
+            'Total Spices': 'Total Spices had the opposite trend in Area and Production between 2007-08 and 2008-09,<br> and remained the same for the rest of the year.',
+            'Wheat': 'Wheat had the opposite trend in Area and Production between 2007-08 and 2008-09,<br> and about the same for the rest of the year.'
+        };
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedCrop = this.getAttribute('data-crop');
+                
+                if(selectedCrop) {
+                    dropdownButton.textContent = selectedCrop;
+                    const imageName = `${selectedCrop}_Area_Production.png`;
+                    cropImage.src = "{% static 'img/' %}" + imageName;
+                    cropImage.alt = `${selectedCrop} chart`;
+
+                    if(cropDescriptions[selectedCrop]) {
+                        trendMessage.innerHTML = cropDescriptions[selectedCrop];
+                    } else {
+                        trendMessage.innerHTML = `The trends in Area and Production of ${selectedCrop} between 2006-07 and 2010-11 are much the same.`;
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

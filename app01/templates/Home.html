@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .dashboard {
+    margin-top: 20px;
+    margin-left: 40px;
+    color: black;
+    font-family: Georgia, serif;
+    font-weight: bold; 
+    font-size: 35px;
+    z-index: 1000;
+  }
+
+  .centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%; 
+    max-width: 100%;
+    margin-top: 18px;
+  }
+
+  .dropdown-btn {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .scrollable-dropdown {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 250px;
+  }
+
+  .dropdown-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+
+<div class="dashboard">
+  Data Overview
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" id="cropDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+      datafile(1).csv
+    </button>
+    <ul class="dropdown-menu scrollable-dropdown" style="margin-left: 100px;">
+      <li><a class="dropdown-item" href="#" data-crop="datafile(1)">datafile(1).csv</a></li>
+      <li><a class="dropdown-item" href="#" data-crop="datafile(2)">datafile(2).csv</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <p style="font-weight: bold; font-size: 1.3em;">The first five rows of the data set</p>
+</div>
+<img id="headImage" src="{% static 'img/datafile(1)_head.png' %}" alt="" class="centered-image" style="margin-bottom: 60px;">
+
+<div class="d-flex justify-content-center">
+  <p style="font-weight: bold; font-size: 1.3em;">Descriptive statistics of data sets</p>
+</div>
+<img id="statisticImage" src="{% static 'img/datafile(1)_statistic.png' %}" alt="" class="centered-image">
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdownItems = document.querySelectorAll('.dropdown-item[data-crop]');
+    const dropdownButton = document.getElementById('cropDropdownButton');
+    const headImage = document.getElementById('headImage');
+    const statisticImage = document.getElementById('statisticImage');
+
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const selectedCrop = this.getAttribute('data-crop');
+
+        if (selectedCrop) {
+          dropdownButton.textContent = selectedCrop + '.csv';
+
+          headImage.src = "{% static 'img/' %}" + selectedCrop + "_head.png";
+          statisticImage.src = "{% static 'img/' %}" + selectedCrop + "_statistic.png";
+
+          headImage.alt = selectedCrop + " head preview";
+          statisticImage.alt = selectedCrop + " statistic preview";
+
+          if (selectedCrop === "datafile(2)") {
+            statisticImage.style.width = "85%";
+          } else {
+            statisticImage.style.width = "65%";
+          }
+        }
+      });
+    });
+  });
+</script>
+
+{% endblock %}

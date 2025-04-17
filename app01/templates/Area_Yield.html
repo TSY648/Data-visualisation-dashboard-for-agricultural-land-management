@@ -1,0 +1,192 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .dashboard{
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+  font-family: Georgia, serif;
+  font-weight: bold; 
+  font-size: 35px;
+  z-index: 1000;
+  }
+
+  .centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 65%; 
+      max-width: 100%;
+      margin-top: 18px;
+  }
+  
+  .dropdown-btn {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  
+  .scrollable-dropdown {
+      max-height: 300px;
+      overflow-y: auto;
+      width: 250px;
+  }
+
+  .dropdown-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+</style>
+
+<div class="dashboard">
+    Area vs Yield
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" id="cropDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Arecanut
+        </button>
+        <ul class="dropdown-menu scrollable-dropdown" style="margin-left: 100px;">
+            <li><a class="dropdown-item" href="#" data-crop="Arecanut">Arecanut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Arhar">Arhar</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Bajra">Bajra</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Banana">Banana</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Barley">Barley</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Black pepper">Black pepper</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cardamom">Cardamom</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Castor seed">Castor seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cereals">Cereals</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coarse Cereals">Coarse Cereals</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coconut">Coconut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coffee">Coffee</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Coriander">Coriander</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cotton seed">Cotton seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Cotton(lint)">Cotton(lint)</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Dry chilies">Dry chilies</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Dry ginger">Dry ginger</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Garlic">Garlic</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Gram">Gram</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Groundnut">Groundnut</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jowar">Jowar</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jute">Jute</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Jute & Mesta">Jute & Mesta</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Linseed">Linseed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Maize">Maize</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Mesta">Mesta</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Niger seed">Niger seed</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Nine Oilseeds">Nine Oilseeds</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Onion">Onion</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Other Pulses">Other Pulses</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Potato">Potato</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Ragi">Ragi</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rapeseed & Mustard">Rapeseed & Mustard</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rice">Rice</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Rubber">Rubber</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Safflower">Safflower</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sannhamp">Sannhamp</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sesamum">Sesamum</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Small millets">Small millets</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Soyabean">Soyabean</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sugarcane">Sugarcane</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sunflower">Sunflower</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Sweet potato">Sweet potato</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tapioca">Tapioca</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tea">Tea</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Tobacco">Tobacco</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Fibers">Total Fibers</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Foodgrains">Total Foodgrains</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Fruits & Vegetables">Total Fruits & Vegetables</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Non-Food grains">Total Non-Food grains</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Oilseeds">Total Oilseeds</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Pulses">Total Pulses</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Total Spices">Total Spices</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Turmeric">Turmeric</a></li>
+            <li><a class="dropdown-item" href="#" data-crop="Wheat">Wheat</a></li>
+        </ul>
+    </div>
+</div>
+
+<img id="cropImage" src="{% static 'img/Arecanut_Area_Yield.png' %}" alt="" class="centered-image">
+
+<div class="d-flex justify-content-center">
+    <p id="trendMessage" style="font-weight: bold; font-size: 1.3em;">The Area and Yield of Arecanut have shown opposite trends during this period.</p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownItems = document.querySelectorAll('.dropdown-item[data-crop]');
+        const dropdownButton = document.getElementById('cropDropdownButton');
+        const cropImage = document.getElementById('cropImage');
+        const trendMessage = document.getElementById('trendMessage');
+
+        const cropDescriptions = {
+            'Arecanut': 'The Area and Yield of Arecanut have shown opposite trends during this period.',
+            'Arhar': 'The Area and Yield of Arhar showed opposite trends from 2009-10 to 2010-11,<br> and remained the same for the rest of the year.',
+            'Bajra': 'The Area and Yield of Bajra showed opposite trends from 2008-09 to 2009-10,<br> and remained the same for the rest of the year.',
+            'Banana': 'The Area and Yield of Banana showed opposite trends from 2006-07 to 2007-08 and 2008-09 to 2009-10,<br> and remained the same for the rest of the year.',
+            'Black pepper': 'The Area and Yield of Black pepper only changed in the same trend from 2006-07 to 2007-08,<br> and reversed the rest of the time.',
+            'Cardamom': 'The Yield of Cardamom has continued to rise during this period, but its Area has only risen once between 2007-08 and 2008-09.',
+            'Castor seed': 'The Area and Yield of Castor seed changed inversely between 2008-09 and 2009-10,<br> and remained the same for the rest of the year.',
+            'Coarse Cereals': 'The Area and Yield of Coarse Cereals only changed in the same trend from 2008-09 to 2009-10,<br> and reversed during the rest of the time.',
+            'Coconut': 'From 2008-09 to 2009-10, the trend of Area and Yield changes was opposite,<br> and the trend of the rest of the time was roughly the same.',
+            'Coffee': 'The Area and Yield of Coffee changed in opposite directions from 2006-07 to 2008-09,<br> and remained the same for the rest of the year.',
+            'Coriander': 'The Area and Yield of Coriander showed opposite trends from 2007-08 to 2009-10,<br> and remained the same for the rest of the period.',
+            'Cotton seed': 'The Yield of Cotton seed decreased between 2007-08 and 2008-09, while the Area remained unchanged,<br> and the trend remained the same for the rest of the year.',
+            'Cotton(lint)': 'The Yield of Cotton(lint) decreased between 2007-08 and 2008-09, while the Area remained unchanged,<br> and the trend remained the same for the rest of the year.',
+            'Dry chilies': 'The Area and Yield of Dry chilies only changed in the same trend from 2008-09 to 2009-10,<br> and reversed during the rest of the time.',
+            'Gram': 'The Area and Yield of Gram showed opposite trends from 2006-07 to 2007-08 and 2009-10 to 2010-11,<br> and remained the same for the rest of the year.',
+            'Jowar': 'The Area and Yield of Jowar showed the same only from 2007-08 to 2008-09,<br> and reversed in the rest of the time.',
+            'Jute': 'The Area and Yield of Jute showed opposite trends between 2006-07 and 2007-08,<br> and remained the same for the rest of the year.',
+            'Jute & Mesta': 'The Area and Yield of Jute & Mesta showed opposite trends between 2006-07 and 2007-08,<br> and remained the same for the rest of the year.',
+            'Linseed': 'Both the Area and Yield of Linseed showed opposite trends throughout the period.',
+            'Maize': 'The Area and Yield of Maize showed opposite trends between 2008-09 and 2009-10,<br> and remained the same for the rest of the year.',
+            'Niger seed': 'The Area and Yield of Niger seed showed the same trend only from 2008-09 to 2009-10,<br> and reversed during the rest of the year.',
+            'Nine Oilseeds': 'The Area and Yield of Nine Oilseeds showed opposite trends from 2007-08 to 2008-09,<br> and remained the same for the rest of the year.',
+            'Onion': 'The Area and Yield of Onion showed opposite trends from 2009-10 to 2010-11,<br> and remained the same for the rest of the year.',
+            'Other Pulses': 'The Area and Yield of Other Pulses showed opposite trends from 2007-08 to 2009-10,<br> and remained the same for the rest of the year.',
+            'Rapeseed & Mustard': 'The Area and Yield of Rapeseed & Mustard showed opposite trends between 2008-09 and 2009-10,<br> and remained the same for the rest of the year.',
+            'Rice': 'The Area and Yield of Rice showed opposite trends between 2007-08 and 2008-09,<br> and remained the same for the rest of the year.',
+            'Rubber': 'The Area and Yield of Rubber showed opposite trends throughout the period.',
+            'Safflower': 'The Area and Yield in Safflower showed the opposite trend between 2006-07 and 2007-08,<br> and the same for the rest of the year.',
+            'Sannhamp': 'The Area and Yield of Sannhamp showed the same trend only during 2009-10 to 2010-11,<br> and reversed during the rest of the time.',
+            'Sesamum': 'The Area and Yield of Sesamum showed the opposite trend between 2007-08 and 2009-10,<br> and the same for the rest of the time.',
+            'Soyabean': 'Soyabean Area and Yield show the same trend only from 2006-07 to 2007-08,<br> and the opposite trend for the rest of the time.',
+            'Sugarcane': 'Sugarcane Area and Yield showed opposite trends from 2008-09 to 2009-10,<br> and remained the same for the rest of the year.',
+            'Sunflower': 'The Area and Yield of Sunflower showed opposite trends from 2006-07 to 2007-08, and 2009-10 to 2010-11,<br> and remained the same for the rest of the year.',
+            'Sweet potato': 'The Area and Yield of Sweet potato showed opposite trends between 2008-09 and 2010-11,<br> and remained the same for the rest of the year.',
+            'Tapioca': 'The Area and Yield of Tapioca have reversed trends throughout the period.',
+            'Tea': 'The Area and Yield of Tea changed inversely from 2006-07 to 2008-09,<br> and remained unchanged for the rest of the time.',
+            'Total Foodgrains': 'The Area and Yield of Total Foodgrains showed opposite trends from 2007-08 to 2008-09,<br> and remained the same for the rest of the year.',
+            'Total Non-Food grains': 'The Area and Yield of Total Non-Food grains only changed in the same trend from 2009-10 to 2010-11,<br> and reversed during the rest of the time.',
+            'Total Oilseeds': 'The trend in Area and Yield of Total Oilseeds was reversed between 2007-08 and 2008-09,<br> and the rest of the time was the same.',
+            'Total Pulses': 'The Area and Yield of Total Pulses showed opposite trends from 2007-08 to 2009-10,<br> and remained the same for the rest of the time.',
+            'Total Spices': 'Total Spices had the opposite trend in Area and Yield between 2007-08 and 2009-10,<br> and remained the same for the rest of the year.',
+            'Turmeric': 'The Area and Yield of Turmeric only showed the same trend from 2009-10 to 2010-11,<br> and reversed during the rest of the time.',
+            'Wheat': 'Wheat had the opposite trend in Area and Yield between 2007-08 and 2009-10,<br> and about the same for the rest of the year.'
+        };
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedCrop = this.getAttribute('data-crop');
+                
+                if(selectedCrop) {
+                    dropdownButton.textContent = selectedCrop;
+                    const imageName = `${selectedCrop}_Area_Yield.png`;
+                    cropImage.src = "{% static 'img/' %}" + imageName;
+                    cropImage.alt = `${selectedCrop} chart`;
+
+                    if(cropDescriptions[selectedCrop]) {
+                        trendMessage.innerHTML = cropDescriptions[selectedCrop];
+                    } else {
+                        trendMessage.innerHTML = `The trends in Area and Yield of ${selectedCrop} between 2006-07 and 2010-11 are much the same.`;
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

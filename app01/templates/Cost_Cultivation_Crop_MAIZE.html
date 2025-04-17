@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .dashboard{
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+  font-family: Georgia, serif;
+  font-weight: bold; 
+  font-size: 35px;
+  z-index: 1000;
+  }
+
+  .centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 65%; 
+      max-width: 100%;
+      margin-top: 18px;
+  }
+</style>
+<div class="dashboard">
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+    <svg t="1738495067092" class="icon" viewBox="0 0 1129 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5325" width="20" height="20">
+      <path d="M0 0m51.582588 0l997.263369 0q51.582588 0 51.582588 51.582588l0 0q0 51.582588-51.582588 51.582588l-997.263369 0q-51.582588 0-51.582588-51.582588l0 0q0-51.582588 51.582588-51.582588Z" p-id="5326"></path>
+      <path d="M0 448.424632m51.582588 0l997.263369 0q51.582588 0 51.582588 51.582588l0 0q0 51.582588-51.582588 51.582588l-997.263369 0q-51.582588 0-51.582588-51.582588l0 0q0-51.582588 51.582588-51.582588Z" p-id="5327"></path>
+      <path d="M0 894.442077m51.582588 0l997.263369 0q51.582588 0 51.582588 51.582588l0 0q0 51.582588-51.582588 51.582588l-997.263369 0q-51.582588 0-51.582588-51.582588l0 0q0-51.582588 51.582588-51.582588Z" p-id="5328"></path>
+    </svg>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <h20 class="offcanvas-title" id="offcanvasNavbarLabel">More</h20>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <li class="nav-item">
+          <a class="nav-link active fs-4 fw-normal" aria-current="page" href="http://127.0.0.1:8000/cost_analysis_MAIZE/">Cost Comparison</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4 fw-normal" href="http://127.0.0.1:8000/cost_production_crop_MAIZE/">Cost of Production</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4 fw-normal" href="http://127.0.0.1:8000/yield_crop_MAIZE">Yield</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+    Cultivation Cost of Crops
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        MAIZE
+      </button>
+      <ul class="dropdown-menu" style="margin-left: 100px;">
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_ARHAR/">ARHAR</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_COTTON/">COTTON</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_GRAM/">GRAM</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_GROUNDNUT/">GROUNDNUT</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_MAIZE/">MAIZE</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_MOONG/">MOONG</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_PADDY/">PADDY</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_RAPESEED/">RAPESEED and MUSTARD </a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_SUGARCANE/">SUGARCANE</a></li>
+        <li><a class="dropdown-item" href="http://127.0.0.1:8000/cost_cultivation_crop_WHEAT/">WHEAT</a></li>
+      </ul>
+</div>
+
+<img src="{% static 'img/Cost of Cultivation for Crop MAIZE.png' %}" alt="" class="centered-image">
+
+<div class="d-flex justify-content-center">
+  <p style="font-weight: bold; font-size: 1.3em;">MAIZE has the lowest cultivation cost in Bihar state, and the highest cultivation cost in Andhra Pradesh state.</p>
+</div>
+{% endblock %}
